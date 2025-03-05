@@ -8,14 +8,17 @@ import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Stack from "@mui/material/Stack";
-import { AlertDetails } from "../alert-details/AlertDetails.tsx";
+import AlertDetails from "../alert-details/AlertDetails.tsx";
+import { Alert } from "../../types.ts";
 
 const Main = () => {
   const [stateCode, setStateCode] = useState(UNSELECTED_STATE_CODE);
   const [open, setOpen] = useState(false);
+  const [alertDetails, setAlertDetails] = useState<Alert>();
 
-  const showAlertDetails = () => {
+  const showAlertDetails = (alertDetails: Alert) => {
     setOpen(true);
+    setAlertDetails(alertDetails);
   };
 
   return (
@@ -35,7 +38,7 @@ const Main = () => {
           <Alerts state={stateCode} showAlertDetails={showAlertDetails} />
         </Grid>
       </Stack>
-      <SimpleDialog selectedValue={""} open={open} onClose={() => setOpen(false)} />
+      <AlertDetails alertDetails={alertDetails} open={open} onClose={() => setOpen(false)} />
     </>
   );
 };

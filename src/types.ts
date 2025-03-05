@@ -1,0 +1,26 @@
+export type Alert = {
+  id: string;
+  effective: string;
+  expires: string;
+  headline: string;
+  description: string;
+  areaDesc: string;
+};
+
+export type Feature = { properties: Alert };
+
+export type AlertDetailsProps = {
+  open: boolean;
+  alertDetails: Alert | undefined;
+  onClose: () => void;
+};
+
+export type AlertsProps = {
+  state: string;
+  showAlertDetails: (alertDetails: Alert) => void;
+};
+
+export type StateSelectorProps = {
+  stateCode: string;
+  handleChange: (newState: string) => void;
+};

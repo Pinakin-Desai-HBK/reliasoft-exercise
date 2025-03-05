@@ -1,11 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid/models/colDef/gridColDef";
 import useAlerts from "./useAlerts";
-import { DataGrid, GridToolbarContainer, GridToolbarFilterButton } from "@mui/x-data-grid";
-
-type AlertsProps = {
-  state: string;
-  showAlertDetails: () => void;
-};
+import { DataGrid, GridCellParams, GridToolbarContainer, GridToolbarFilterButton } from "@mui/x-data-grid";
+import { Alert, AlertsProps } from "../../types.ts";
 
 const Abc = () => {
   return <div>abc</div>;
@@ -42,7 +38,7 @@ const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
           </GridToolbarContainer>
         )
       }}
-      onCellClick={() => showAlertDetails()}
+      onCellClick={(params: GridCellParams) => showAlertDetails(params.row as Alert)}
     />
   );
 };

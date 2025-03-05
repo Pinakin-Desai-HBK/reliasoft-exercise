@@ -3,11 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import states from "./states.json";
 import { UNSELECTED_STATE_CODE } from "../../consts.ts";
 import Box from "@mui/material/Box";
-
-type StateSelectorProps = {
-  stateCode: string;
-  handleChange: (newState: string) => void;
-};
+import { StateSelectorProps } from "../../types.ts";
 
 const StateSelector = ({ stateCode, handleChange }: StateSelectorProps) => {
   return (
