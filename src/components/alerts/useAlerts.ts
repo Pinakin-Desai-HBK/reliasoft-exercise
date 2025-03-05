@@ -9,12 +9,12 @@ const getAlertsForStateCode = async (stateCode: string) => {
 };
 
 const useAlerts = (stateCode: string) => {
-  const { data, isFetching } = useQuery({
+  const { data, isFetching } = useQuery<{ features: Feature[] }>({
     queryKey: ["get", stateCode],
     queryFn: () => getAlertsForStateCode(stateCode),
     enabled: stateCode !== UNSELECTED_STATE_CODE && !!stateCode
   });
-  const [alerts, setAlerts] = useState<string[]>([]);
+  const [alerts, setAlerts] = useState<Alert[]>([]);
 
   useEffect(() => {
     if (data) {
