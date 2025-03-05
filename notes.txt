@@ -1,0 +1,12 @@
+Accessibility
+
+Responsive
+
+Unit Tests
+
+Playwright Tests
+
+MUI
+
+Prettier
+
