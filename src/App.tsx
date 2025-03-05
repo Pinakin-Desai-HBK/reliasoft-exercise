@@ -1,9 +1,7 @@
 import Main from "./components/main/Main.tsx";
 
 function App() {
-  return (
-    <Main/>
-  )
+  return <Main />;
 }
 
-export default App
+export default App;
