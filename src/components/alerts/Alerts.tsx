@@ -1,12 +1,17 @@
 import { GridColDef } from "@mui/x-data-grid/models/colDef/gridColDef";
 import useAlerts from "./useAlerts";
-import { DataGrid } from "@mui/x-data-grid/DataGrid";
+import { DataGrid, GridToolbarContainer, GridToolbarFilterButton } from "@mui/x-data-grid";
 
 type AlertsProps = {
   state: string;
+  showAlertDetails: () => void;
 };
 
-const Alerts = ({ state }: AlertsProps) => {
+const Abc = () => {
+  return <div>abc</div>;
+};
+
+const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
   const { alerts, loading } = useAlerts(state);
 
   const columns: GridColDef[] = [
@@ -29,6 +34,15 @@ const Alerts = ({ state }: AlertsProps) => {
       pageSizeOptions={[10]}
       disableRowSelectionOnClick
       loading={loading}
+      slots={{
+        toolbar: () => (
+          <GridToolbarContainer>
+            <GridToolbarFilterButton />
+            <Abc />
+          </GridToolbarContainer>
+        )
+      }}
+      onCellClick={() => showAlertDetails()}
     />
   );
 };
