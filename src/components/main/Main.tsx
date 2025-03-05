@@ -18,6 +18,7 @@ const Main = () => {
 
   const showAlertDetails = (alertDetails: Alert) => {
     setOpen(true);
+    console.log(alertDetails);
     setAlertDetails(alertDetails);
   };
 

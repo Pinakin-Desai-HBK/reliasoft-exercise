@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { UNSELECTED_STATE_CODE } from "../../consts.ts";
 import { useEffect, useState } from "react";
-import { Feature } from "../../types.ts";
+import { Alert, Feature } from "../../types.ts";
 
 const getAlertsForStateCode = async (stateCode: string) => {
   const res = await fetch(`https://api.weather.gov/alerts/active?area=${stateCode}`);
@@ -19,14 +19,16 @@ const useAlerts = (stateCode: string) => {
   useEffect(() => {
     if (data) {
       setAlerts(
-        data.features.map((feature: Feature) => ({
-          id: feature.properties.id,
-          effective: new Date(feature.properties.effective).toLocaleString(),
-          expires: new Date(feature.properties.expires).toLocaleString(),
-          headline: feature.properties.headline,
-          descriptions: feature.properties.description,
-          areaDesc: feature.properties.areaDesc
-        }))
+        data.features.map(
+          (feature: Feature): Alert => ({
+            id: feature.properties.id,
+            effective: new Date(feature.properties.effective).toLocaleString(),
+            expires: new Date(feature.properties.expires).toLocaleString(),
+            headline: feature.properties.headline,
+            description: feature.properties.description,
+            areaDesc: feature.properties.areaDesc
+          })
+        )
       );
     }
   }, [data]);
