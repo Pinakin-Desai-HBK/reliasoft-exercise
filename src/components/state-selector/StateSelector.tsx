@@ -1,9 +1,9 @@
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import states from "./states.json";
-import { UNSELECTED_STATE_CODE } from "../../consts.ts";
+import { UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
 import Box from "@mui/material/Box";
-import { StateSelectorProps } from "../../types.ts";
+import { StateSelectorProps } from "../../types/types.ts";
 
 const StateSelector = ({ stateCode, handleChange }: StateSelectorProps) => {
   return (

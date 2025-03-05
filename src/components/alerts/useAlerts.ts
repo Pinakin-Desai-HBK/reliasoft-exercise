@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { UNSELECTED_STATE_CODE } from "../../consts.ts";
+import { UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
 import { useEffect, useState } from "react";
-import { Alert, Feature } from "../../types.ts";
+import { Alert, Feature } from "../../types/types.ts";
 
 const getAlertsForStateCode = async (stateCode: string) => {
   const res = await fetch(`https://api.weather.gov/alerts/active?area=${stateCode}`);

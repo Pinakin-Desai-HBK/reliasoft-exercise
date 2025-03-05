@@ -1,13 +1,11 @@
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import { AlertDetailsProps } from "../../types.ts";
+import { AlertDetailsProps } from "../../types/types.ts";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
-const AlertDetails = (props: AlertDetailsProps) => {
-  const { onClose, alertDetails, open } = props;
-
+const AlertDetails = ({ onClose, alertDetails, open }: AlertDetailsProps) => {
   return (
     <Dialog open={open} onClose={() => onClose()} maxWidth={"md"}>
       <DialogTitle>{alertDetails?.headline}</DialogTitle>

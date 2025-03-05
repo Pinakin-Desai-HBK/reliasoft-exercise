@@ -1,14 +1,14 @@
 import { GridColDef } from "@mui/x-data-grid/models/colDef/gridColDef";
 import useAlerts from "./useAlerts";
 import { DataGrid, GridCellParams, GridToolbarContainer, GridToolbarFilterButton } from "@mui/x-data-grid";
-import { Alert, AlertsProps } from "../../types.ts";
+import { Alert, AlertsProps } from "../../types/types.ts";
 
 const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
   const { alerts, loading } = useAlerts(state);
 
   const columns: GridColDef[] = [
-    { field: "effective", headerName: "Effective", width: 200 },
-    { field: "expires", headerName: "Expires", width: 200 },
+    { field: "effective", headerName: "Effective", width: 200, filterable: false },
+    { field: "expires", headerName: "Expires", width: 200, filterable: false },
     { field: "headline", headerName: "Headline", width: 800 }
   ];
 
