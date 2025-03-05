@@ -27,7 +27,6 @@ const Alerts = ({ state }: AlertsProps) => {
         }
       }}
       pageSizeOptions={[5]}
-      checkboxSelection
       disableRowSelectionOnClick
     />
   );

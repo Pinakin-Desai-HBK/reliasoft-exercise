@@ -1,1 +1,1 @@
-export const UNSELECTED_STATE = "unselected";
+export const UNSELECTED_STATE_CODE = "unselected";
