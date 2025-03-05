@@ -1,12 +1,9 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import Typography from "@mui/material/Typography";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 
@@ -16,7 +13,7 @@ export interface SimpleDialogProps {
   onClose: (value: string) => void;
 }
 
-export function SimpleDialog(props: SimpleDialogProps) {
+const AlertDetails = (props: SimpleDialogProps) => {
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {
@@ -46,31 +43,6 @@ export function SimpleDialog(props: SimpleDialogProps) {
       </List>
     </Dialog>
   );
-}
+};
 
-export default function SimpleDialogDemo() {
-  const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (value: string) => {
-    setOpen(false);
-    setSelectedValue(value);
-  };
-
-  return (
-    <div>
-      <Typography variant="subtitle1" component="div">
-        Selected: {selectedValue}
-      </Typography>
-      <br />
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open simple dialog
-      </Button>
-      <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
-    </div>
-  );
-}
+export default AlertDetails;

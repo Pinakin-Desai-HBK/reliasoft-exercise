@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Stack from "@mui/material/Stack";
-import { SimpleDialog } from "../simple-dialog/SimpleDialog.tsx";
+import { AlertDetails } from "../alert-details/AlertDetails.tsx";
 
 const Main = () => {
   const [stateCode, setStateCode] = useState(UNSELECTED_STATE_CODE);
@@ -35,7 +35,7 @@ const Main = () => {
           <Alerts state={stateCode} showAlertDetails={showAlertDetails} />
         </Grid>
       </Stack>
-      <SimpleDialog selectedValue={""} open={open} onClose={() => ({})} />
+      <SimpleDialog selectedValue={""} open={open} onClose={() => setOpen(false)} />
     </>
   );
 };
