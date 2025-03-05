@@ -7,27 +7,28 @@ type AlertsProps = {
 };
 
 const Alerts = ({ state }: AlertsProps) => {
-  const { alerts } = useAlerts(state);
+  const { alerts, loading } = useAlerts(state);
 
   const columns: GridColDef[] = [
-    { field: "effective", headerName: "Effective", width: 150 },
-    { field: "expires", headerName: "Expires", width: 150 },
-    { field: "headline", headerName: "Last name", width: 150 }
+    { field: "effective", headerName: "Effective", width: 200 },
+    { field: "expires", headerName: "Expires", width: 200 },
+    { field: "headline", headerName: "Headline", width: 800 }
   ];
 
   return (
     <DataGrid
-      rows={[]}
+      rows={alerts}
       columns={columns}
       initialState={{
         pagination: {
           paginationModel: {
-            pageSize: 5
+            pageSize: 10
           }
         }
       }}
-      pageSizeOptions={[5]}
+      pageSizeOptions={[10]}
       disableRowSelectionOnClick
+      loading={loading}
     />
   );
 };
