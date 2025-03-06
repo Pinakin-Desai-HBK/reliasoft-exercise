@@ -15,7 +15,6 @@ const useAlerts = (stateCode: string) => {
     enabled: stateCode !== UNSELECTED_STATE_CODE && !!stateCode
   });
   const [alerts, setAlerts] = useState<Alert[]>([]);
-
   useEffect(() => {
     if (data) {
       setAlerts(

@@ -1,22 +1,15 @@
-import { GridColDef } from "@mui/x-data-grid/models/colDef/gridColDef";
 import useAlerts from "./useAlerts";
 import { DataGrid, GridCellParams, GridToolbarContainer, GridToolbarFilterButton } from "@mui/x-data-grid";
 import { Alert, AlertsProps } from "../../types/types.ts";
-import { UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
+import { ALERT_COLUMNS, UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
 
 const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
   const { alerts, loading } = useAlerts(state);
 
-  const columns: GridColDef[] = [
-    { field: "effective", headerName: "Effective", width: 200, filterable: false },
-    { field: "expires", headerName: "Expires", width: 200, filterable: false },
-    { field: "headline", headerName: "Headline", width: 800 }
-  ];
-
   return (
     <DataGrid
       rows={alerts}
-      columns={columns}
+      columns={ALERT_COLUMNS}
       initialState={{
         pagination: {
           paginationModel: {
