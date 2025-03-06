@@ -24,3 +24,9 @@ export type StateSelectorProps = {
   stateCode: string;
   handleChange: (newState: string) => void;
 };
+
+export type DataRangeProps = {
+  startDate: string;
+  endDate: string;
+  selectionChange: (startDate?: string, endDate?: string) => void;
+};

@@ -7,6 +7,10 @@ import DateRange from "../data-range/DataRange.tsx";
 const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
   const { alerts, loading } = useAlerts(state);
 
+  const handleSelectionChange = (startDate?: string, endDate?: string) => {
+    console.log(startDate, endDate);
+  };
+
   return (
     <DataGrid
       rows={alerts}
@@ -25,7 +29,13 @@ const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
         toolbar: () => (
           <GridToolbarContainer>
             <GridToolbarFilterButton />
-            <DateRange />
+            {alerts && alerts.length ? (
+              <DateRange
+                startDate={new Date(alerts[alerts.length - 1].effective).toLocaleString()}
+                endDate={new Date(alerts[0].expires).toLocaleDateString()}
+                selectionChange={handleSelectionChange}
+              />
+            ) : null}
           </GridToolbarContainer>
         )
       }}
