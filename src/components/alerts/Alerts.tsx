@@ -2,6 +2,7 @@ import useAlerts from "./useAlerts";
 import { DataGrid, GridCellParams, GridToolbarContainer, GridToolbarFilterButton } from "@mui/x-data-grid";
 import { Alert, AlertsProps } from "../../types/types.ts";
 import { ALERT_COLUMNS, UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
+import DateRange from "../data-range/DataRange.tsx";
 
 const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
   const { alerts, loading } = useAlerts(state);
@@ -24,6 +25,7 @@ const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
         toolbar: () => (
           <GridToolbarContainer>
             <GridToolbarFilterButton />
+            <DateRange />
           </GridToolbarContainer>
         )
       }}
