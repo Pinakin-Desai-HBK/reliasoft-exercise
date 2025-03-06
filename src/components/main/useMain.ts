@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { STORED_STATE_CODE, UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
+import { DEFAULT_ALERT_DETAILS, STORED_STATE_CODE, UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
 import { Alert } from "../../types/types.ts";
 
 const useMain = () => {
   const [stateCode, setStateCode] = useState(UNSELECTED_STATE_CODE);
   const [showDetails, setShowDetails] = useState(false);
-  const [alertDetails, setAlertDetails] = useState<Alert>();
+  const [alertDetails, setAlertDetails] = useState<Alert>(DEFAULT_ALERT_DETAILS);
 
   const showAlertDetails = (alertDetails: Alert) => {
     setShowDetails(true);
@@ -26,7 +26,7 @@ const useMain = () => {
     if (storedStateCode) {
       setStateCode(storedStateCode);
     }
-  });
+  }, []);
 
   return {
     stateCode,

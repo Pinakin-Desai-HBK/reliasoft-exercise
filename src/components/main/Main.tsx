@@ -16,9 +16,7 @@ const Main = () => {
       <Box sx={{ flexGrow: 1 }} role="header">
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              National Weather Alerts
-            </Typography>
+            <Typography variant="h6">National Weather Alerts</Typography>
           </Toolbar>
         </AppBar>
       </Box>

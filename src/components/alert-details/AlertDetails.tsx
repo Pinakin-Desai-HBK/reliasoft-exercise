@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 const AlertDetails = ({ onClose, alertDetails, open }: AlertDetailsProps) =>
   alertDetails ? (
     <Dialog open={open} onClose={() => onClose()} maxWidth={"md"}>
-      <DialogTitle>{alertDetails.headline}</DialogTitle>
+      <DialogTitle sx={{ backgroundColor: "#e5e5e5", marginBottom: "20px" }}>{alertDetails.headline}</DialogTitle>
       <Stack paddingLeft={3} paddingRight={3} paddingBottom={3} spacing={2}>
         <Box>
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
