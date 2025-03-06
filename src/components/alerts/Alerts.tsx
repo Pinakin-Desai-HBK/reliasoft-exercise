@@ -5,11 +5,7 @@ import { ALERT_COLUMNS, UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
 import DateRange from "../data-range/DataRange.tsx";
 
 const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
-  const { alerts, loading } = useAlerts(state);
-
-  const handleSelectionChange = (startDate?: string, endDate?: string) => {
-    console.log(startDate, endDate);
-  };
+  const { alerts, loading, handleDateRangeChange } = useAlerts(state);
 
   return (
     <DataGrid
@@ -31,9 +27,9 @@ const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
             <GridToolbarFilterButton />
             {alerts && alerts.length ? (
               <DateRange
-                startDate={new Date(alerts[alerts.length - 1].effective).toLocaleString()}
-                endDate={new Date(alerts[0].expires).toLocaleDateString()}
-                selectionChange={handleSelectionChange}
+                startDate={new Date(alerts[alerts.length - 1].effective).toISOString()}
+                endDate={new Date(alerts[0].effective).toISOString()}
+                selectionChange={handleDateRangeChange}
               />
             ) : null}
           </GridToolbarContainer>

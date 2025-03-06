@@ -15,14 +15,21 @@ const useAlerts = (stateCode: string) => {
     enabled: stateCode !== UNSELECTED_STATE_CODE && !!stateCode
   });
   const [alerts, setAlerts] = useState<Alert[]>([]);
+
+  const handleDateRangeChange = (startDate: string, endDate: string) => {
+    console.log(startDate, endDate);
+  };
+
   useEffect(() => {
     if (data) {
       setAlerts(
         data.features.map(
           (feature: Feature): Alert => ({
             id: feature.properties.id,
-            effective: new Date(feature.properties.effective).toLocaleString(),
-            expires: new Date(feature.properties.expires).toLocaleString(),
+            effective: feature.properties.effective,
+            effectiveLocale: new Date(feature.properties.effective).toLocaleString(),
+            expires: feature.properties.expires,
+            expiresLocale: new Date(feature.properties.expires).toLocaleString(),
             headline: feature.properties.headline,
             description: feature.properties.description,
             areaDesc: feature.properties.areaDesc
@@ -32,7 +39,7 @@ const useAlerts = (stateCode: string) => {
     }
   }, [data]);
 
-  return { alerts, loading: isFetching };
+  return { alerts, loading: isFetching, handleDateRangeChange };
 };
 
 export default useAlerts;

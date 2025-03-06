@@ -1,7 +1,9 @@
 export type Alert = {
   id: string;
   effective: string;
+  effectiveLocale: string;
   expires: string;
+  expiresLocale: string;
   headline: string;
   description: string;
   areaDesc: string;
@@ -28,5 +30,5 @@ export type StateSelectorProps = {
 export type DataRangeProps = {
   startDate: string;
   endDate: string;
-  selectionChange: (startDate?: string, endDate?: string) => void;
+  selectionChange: (startDate: string, endDate: string) => void;
 };

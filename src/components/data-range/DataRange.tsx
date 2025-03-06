@@ -3,9 +3,10 @@ import IconButton from "@mui/material/IconButton";
 import DateRange from "@mui/icons-material/DateRange";
 import { DataRangeProps } from "../../types/types.ts";
 import useDateRange from "./useDateRange.ts";
+import Button from "@mui/material/Button";
 
 const DataRange = ({ startDate, endDate, selectionChange }: DataRangeProps) => {
-  const { showPicker, setShowPicker, selectionRange, handleSelect } = useDateRange({
+  const { showPicker, setShowPicker, selectionRange, handleSelect, handleClear } = useDateRange({
     startDate,
     endDate,
     selectionChange
@@ -16,7 +17,10 @@ const DataRange = ({ startDate, endDate, selectionChange }: DataRangeProps) => {
       <IconButton aria-label="show picker" color="primary" onClick={() => setShowPicker(!showPicker)}>
         <DateRange />
       </IconButton>
-      {showPicker ? <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} /> : null}
+      <Button onClick={() => handleClear()}>Clear Date Selection</Button>
+      {showPicker ? (
+        <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} showMonthAndYearPickers={false} />
+      ) : null}
     </>
   );
 };
