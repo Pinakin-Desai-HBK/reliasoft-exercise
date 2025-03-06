@@ -53,7 +53,7 @@ const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
         localeText={{ noRowsLabel: state === UNSELECTED_STATE_CODE ? "" : "No alerts found for this state." }}
       />
       {alertsToShow && alertsToShow.length ? (
-        <Typography sx={{ opacity: "0.5" }}>Click in a row to get more alert details.</Typography>
+        <Typography sx={{ opacity: "0.5" }}>Click alert to get more details.</Typography>
       ) : null}
     </>
   );
