@@ -3,6 +3,7 @@ import { RangeKeyDict } from "react-date-range";
 import { DataRangeProps } from "../../types/types.ts";
 
 const useDateRange = ({ startDate, endDate, selectionChange }: DataRangeProps) => {
+  console.log(111, startDate, endDate);
   const [showPicker, setShowPicker] = useState(false);
   const initialStartDate = new Date(startDate);
   const initialEndDate = new Date(endDate);
@@ -13,18 +14,18 @@ const useDateRange = ({ startDate, endDate, selectionChange }: DataRangeProps) =
   });
 
   const handleSelect = (ranges: RangeKeyDict) => {
-    if (
-      ranges.selection.startDate &&
-      ranges.selection.endDate &&
-      ranges.selection.startDate.getTime() > initialStartDate.getTime() &&
-      ranges.selection.endDate.getTime() < initialEndDate.getTime()
-    ) {
-      selectionChange(ranges.selection.startDate.toISOString(), ranges.selection.endDate.toISOString());
+    console.log(ranges);
+    if (ranges.selection.startDate && ranges.selection.endDate) {
       setSelectionRange({
         ...selectionRange,
         endDate: ranges.selection.endDate,
         startDate: ranges.selection.startDate
       });
+
+      if (ranges.selection.startDate !== ranges.selection.endDate) {
+        ranges.selection.endDate.setDate(ranges.selection.endDate.getDate() + 1);
+        selectionChange(ranges.selection.startDate.toISOString(), ranges.selection.endDate.toISOString());
+      }
     }
   };
 
@@ -34,6 +35,7 @@ const useDateRange = ({ startDate, endDate, selectionChange }: DataRangeProps) =
       startDate: initialStartDate,
       endDate: initialEndDate
     });
+    selectionChange(initialStartDate.toISOString(), initialEndDate.toISOString());
   };
 
   return { showPicker, setShowPicker, selectionRange, handleSelect, handleClear };

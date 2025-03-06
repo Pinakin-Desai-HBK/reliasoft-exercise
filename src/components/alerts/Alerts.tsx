@@ -5,11 +5,11 @@ import { ALERT_COLUMNS, UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
 import DateRange from "../data-range/DataRange.tsx";
 
 const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
-  const { alerts, loading, handleDateRangeChange } = useAlerts(state);
+  const { alerts, alertsToShow, loading, handleDateRangeChange } = useAlerts(state);
 
   return (
     <DataGrid
-      rows={alerts}
+      rows={alertsToShow}
       columns={ALERT_COLUMNS}
       initialState={{
         pagination: {
