@@ -18,11 +18,9 @@ const useAlerts = (stateCode: string) => {
   const [alertsToShow, setAlertsToShow] = useState<Alert[]>([]);
 
   const handleDateRangeChange = (startDate: string, endDate: string) => {
-    console.log(8, alerts, startDate, endDate);
     setAlertsToShow(
       alerts.filter((alert: Alert) => {
         const alertDate = new Date(alert.effective);
-        console.log(alertDate);
         return alertDate >= new Date(startDate) && alertDate <= new Date(endDate);
       })
     );

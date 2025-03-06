@@ -13,7 +13,7 @@ export type Feature = { properties: Alert };
 
 export type AlertDetailsProps = {
   open: boolean;
-  alertDetails: Alert | undefined;
+  alertDetails: Alert;
   onClose: () => void;
 };
 
