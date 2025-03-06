@@ -2,6 +2,7 @@ import { GridColDef } from "@mui/x-data-grid/models/colDef/gridColDef";
 import useAlerts from "./useAlerts";
 import { DataGrid, GridCellParams, GridToolbarContainer, GridToolbarFilterButton } from "@mui/x-data-grid";
 import { Alert, AlertsProps } from "../../types/types.ts";
+import { UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
 
 const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
   const { alerts, loading } = useAlerts(state);
@@ -34,6 +35,16 @@ const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
         )
       }}
       onCellClick={(params: GridCellParams) => showAlertDetails(params.row as Alert)}
+      getRowClassName={(params) => (params.indexRelativeToCurrentPage % 2 === 0 ? "Mui-even" : "Mui-odd")}
+      sx={{
+        " & .MuiDataGrid-row.Mui-odd": {
+          backgroundColor: "#f8f8f8"
+        },
+        " & .MuiDataGrid-container--top [role=row]": {
+          backgroundColor: "rgba(25, 118, 210, 0.11)"
+        }
+      }}
+      localeText={{ noRowsLabel: state === UNSELECTED_STATE_CODE ? "" : "No alerts found for this state." }}
     />
   );
 };
