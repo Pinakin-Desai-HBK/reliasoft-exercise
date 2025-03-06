@@ -28,7 +28,7 @@ export type StateSelectorProps = {
 };
 
 export type DataRangeProps = {
-  startDate: string;
-  endDate: string;
+  initialStartDate: string;
+  initialEndDate: string;
   selectionChange: (startDate: string, endDate: string) => void;
 };

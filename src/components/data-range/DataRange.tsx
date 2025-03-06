@@ -5,10 +5,10 @@ import { DataRangeProps } from "../../types/types.ts";
 import useDateRange from "./useDateRange.ts";
 import Button from "@mui/material/Button";
 
-const DataRange = ({ startDate, endDate, selectionChange }: DataRangeProps) => {
+const DataRange = ({ initialStartDate, initialEndDate, selectionChange }: DataRangeProps) => {
   const { showPicker, setShowPicker, selectionRange, handleSelect, handleClear } = useDateRange({
-    startDate,
-    endDate,
+    initialStartDate: initialStartDate,
+    initialEndDate: initialEndDate,
     selectionChange
   });
 

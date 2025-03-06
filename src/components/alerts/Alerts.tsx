@@ -27,8 +27,8 @@ const Alerts = ({ state, showAlertDetails }: AlertsProps) => {
             <GridToolbarFilterButton />
             {alerts && alerts.length ? (
               <DateRange
-                startDate={new Date(alerts[alerts.length - 1].effective).toISOString()}
-                endDate={new Date(alerts[0].effective).toISOString()}
+                initialStartDate={new Date(alerts[alerts.length - 1].effective).toISOString()}
+                initialEndDate={new Date(alerts[0].effective).toISOString()}
                 selectionChange={handleDateRangeChange}
               />
             ) : null}
