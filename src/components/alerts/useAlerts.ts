@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { UNSELECTED_STATE_CODE } from "../../consts/consts.ts";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Alert, Feature } from "../../types/types.ts";
 
 const getAlertsForStateCode = async (stateCode: string) => {
@@ -17,14 +17,17 @@ const useAlerts = (stateCode: string) => {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [alertsToShow, setAlertsToShow] = useState<Alert[]>([]);
 
-  const handleDateRangeChange = (startDate: string, endDate: string) => {
-    setAlertsToShow(
-      alerts.filter((alert: Alert) => {
-        const alertDate = new Date(alert.effective);
-        return alertDate >= new Date(startDate) && alertDate <= new Date(endDate);
-      })
-    );
-  };
+  const handleDateRangeChange = useCallback(
+    (startDate: string, endDate: string) => {
+      setAlertsToShow(
+        alerts.filter((alert: Alert) => {
+          const alertDate = new Date(alert.effective);
+          return alertDate >= new Date(startDate) && alertDate <= new Date(endDate);
+        })
+      );
+    },
+    [alerts]
+  );
 
   useEffect(() => {
     if (data) {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { RangeKeyDict } from "react-date-range";
 import { DataRangeProps } from "../../types/types.ts";
 
@@ -10,29 +10,32 @@ const useDateRange = ({ initialStartDate, initialEndDate, selectionChange }: Dat
     key: "selection"
   });
 
-  const handleSelect = (ranges: RangeKeyDict) => {
-    if (ranges.selection.startDate && ranges.selection.endDate) {
-      setSelectionRange({
-        ...selectionRange,
-        endDate: ranges.selection.endDate,
-        startDate: ranges.selection.startDate
-      });
+  const handleSelect = useCallback(
+    (ranges: RangeKeyDict) => {
+      if (ranges.selection.startDate && ranges.selection.endDate) {
+        setSelectionRange({
+          ...selectionRange,
+          endDate: ranges.selection.endDate,
+          startDate: ranges.selection.startDate
+        });
 
-      if (ranges.selection.startDate !== ranges.selection.endDate) {
-        ranges.selection.endDate.setDate(ranges.selection.endDate.getDate() + 1);
-        selectionChange(ranges.selection.startDate.toISOString(), ranges.selection.endDate.toISOString());
+        if (ranges.selection.startDate !== ranges.selection.endDate) {
+          ranges.selection.endDate.setDate(ranges.selection.endDate.getDate() + 1);
+          selectionChange(ranges.selection.startDate.toISOString(), ranges.selection.endDate.toISOString());
+        }
       }
-    }
-  };
+    },
+    [selectionRange, selectionChange]
+  );
 
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
     setSelectionRange({
       ...selectionRange,
       startDate: new Date(initialStartDate),
       endDate: new Date(initialEndDate)
     });
     selectionChange(new Date(initialStartDate).toISOString(), new Date(initialEndDate).toISOString());
-  };
+  }, [initialStartDate, initialEndDate, selectionChange, selectionRange]);
 
   return { showPicker, setShowPicker, selectionRange, handleSelect, handleClear };
 };
