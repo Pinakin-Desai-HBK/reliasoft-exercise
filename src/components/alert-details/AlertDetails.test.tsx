@@ -42,4 +42,18 @@ describe("AlertDetails", () => {
     render(<AlertDetails {...alertDetails} />);
     expect(screen.getByText("TownA, TownB, TownC")).toBeInTheDocument();
   });
+
+  it("calls onClose when the top close button is clicked", () => {
+    render(<AlertDetails {...alertDetails} />);
+    const closeButton = screen.getByRole("button", { name: "closetop" });
+    closeButton.click();
+    expect(mockOnClose).toHaveBeenCalled();
+  });
+
+  it("calls onClose when the bottom close button is clicked", () => {
+    render(<AlertDetails {...alertDetails} />);
+    const closeButton = screen.getByRole("button", { name: "Close" });
+    closeButton.click();
+    expect(mockOnClose).toHaveBeenCalled();
+  });
 });

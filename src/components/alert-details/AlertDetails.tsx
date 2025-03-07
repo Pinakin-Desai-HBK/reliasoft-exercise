@@ -2,7 +2,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import { AlertDetailsProps } from "../../types/types.ts";
 import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -14,7 +13,7 @@ const AlertDetails = ({ onClose, alertDetails, open }: AlertDetailsProps) => (
   <Dialog open={open} onClose={() => onClose()} maxWidth={"md"}>
     <DialogTitle sx={{ backgroundColor: "#1976d2", color: "white" }}>{alertDetails.headline}</DialogTitle>
     <IconButton
-      aria-label="close"
+      aria-label="closetop"
       onClick={() => onClose()}
       sx={{ position: "absolute", right: 8, top: 4, color: "white" }}
     >
