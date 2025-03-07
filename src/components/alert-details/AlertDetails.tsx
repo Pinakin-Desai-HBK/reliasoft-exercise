@@ -11,7 +11,9 @@ import DialogContent from "@mui/material/DialogContent";
 
 const AlertDetails = ({ onClose, alertDetails, open }: AlertDetailsProps) => (
   <Dialog open={open} onClose={() => onClose()} maxWidth={"md"}>
-    <DialogTitle sx={{ backgroundColor: "#1976d2", color: "white" }}>{alertDetails.headline}</DialogTitle>
+    <DialogTitle sx={{ backgroundColor: "#1976d2", color: "white", paddingRight: "60px" }}>
+      {alertDetails.headline}
+    </DialogTitle>
     <IconButton
       aria-label="closetop"
       onClick={() => onClose()}
