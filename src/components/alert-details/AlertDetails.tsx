@@ -4,18 +4,30 @@ import { AlertDetailsProps } from "../../types/types.ts";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import DialogActions from "@mui/material/DialogActions";
+import Button from "@mui/material/Button";
+import DialogContent from "@mui/material/DialogContent";
 
 const AlertDetails = ({ onClose, alertDetails, open }: AlertDetailsProps) => (
   <Dialog open={open} onClose={() => onClose()} maxWidth={"md"}>
-    <DialogTitle sx={{ backgroundColor: "#e5e5e5", marginBottom: "20px" }}>{alertDetails.headline}</DialogTitle>
-    <Stack paddingLeft={3} paddingRight={3} paddingBottom={3} spacing={2}>
-      <Box>
+    <DialogTitle sx={{ backgroundColor: "#1976d2", color: "white" }}>{alertDetails.headline}</DialogTitle>
+    <IconButton
+      aria-label="close"
+      onClick={() => onClose()}
+      sx={{ position: "absolute", right: 8, top: 4, color: "white" }}
+    >
+      <CloseIcon />
+    </IconButton>
+    <DialogContent dividers>
+      <Box marginBottom={2}>
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
           Details
         </Typography>
         <Typography>{alertDetails.description}</Typography>
       </Box>
-      <Box>
+      <Box marginBottom={2}>
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
           Duration
         </Typography>
@@ -28,7 +40,12 @@ const AlertDetails = ({ onClose, alertDetails, open }: AlertDetailsProps) => (
         </Typography>
         <Typography>{alertDetails.areaDesc}</Typography>
       </Box>
-    </Stack>
+    </DialogContent>
+    <DialogActions>
+      <Button autoFocus onClick={() => onClose()}>
+        Close
+      </Button>
+    </DialogActions>
   </Dialog>
 );
 
